@@ -1,0 +1,35 @@
+.light {
+  --educ-background-color: #d6dbd2;
+  /* #f7d488; */
+  --educ-container-color: #d6dbd2;
+  --educ-shadow: #ff5d5d70;
+  --educ-text-color: #000000;
+}
+
+.dark {
+  --educ-background-color: #070600;
+  --educ-container-color: #8f8f8f29;
+  --educ-shadow: #ff2727a8;
+  --educ-text-color: #ffffff;
+}
+.educ_cert {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--educ-background-color);
+  height: 100%;
+  padding-top: 39px;
+}
+h2 {
+  margin: 100px;
+}
+.educ_cert h2 {
+  color: var(--about-text-color);
+  text-shadow: 0px 0px 50px #4343437a;
+  padding-bottom: 20px;
+}
+@media screen and (max-width: 1024px) {
+  .educ_cert {
+    padding-top: 64px;
+  }
+}

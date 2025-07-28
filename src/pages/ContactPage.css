@@ -1,0 +1,234 @@
+.light {
+  --contact-background-color: #d6dbd2;
+  --contact-container: #8989891c;
+  --contact-container-right: #0000001c;
+  --text-color: #161616;
+  --bg-shadow: #8f8f8f;
+  --input-text: #202020;
+}
+
+.dark {
+  --contact-background-color: #070600;
+  --contact-container: #c5c2c21a;
+  --contact-container-right: #6e6e6e1c;
+  --text-color: #d9d9d9;
+  --bg-shadow: #000;
+  --input-text: #afafaf;
+}
+
+.contact_page_section {
+  padding: 60px 0;
+  background: var(--contact-background-color);
+}
+.contact_section {
+  width: 90%;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.contact_page_section,
+.contact_section,
+.contact_container,
+.form_container_right,
+.form_container_left,
+.user_form,
+.user_send_msg_button,
+.submit_msg,
+.user_message_form h3,
+.user_message_form p,
+.contact_data_class {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.contact_container,
+.contact_page_section,
+.user_form,
+.user_message_form,
+.your_info_data {
+  width: 100%;
+}
+
+.form_container_right {
+  width: 100%;
+  background-color: var(--contact-container-right);
+}
+
+.user_message_form {
+  padding: 15px 0;
+}
+.username_val,
+.user_msg,
+.name_val {
+  display: flex;
+  flex-direction: column;
+  margin: 9px;
+  color: var(--text-color);
+}
+input {
+  height: 39px;
+  line-height: 54px;
+}
+
+.submit_msg {
+  height: 45px;
+  width: 95%;
+  gap: 9px;
+  background: #9a24b9;
+  border: 1px solid #9a24b9;
+  color: #fff;
+  margin: 9px 0 0 0;
+  font-size: 18px;
+  font-weight: 500;
+  transition: ease-in-out 0.5s;
+  border-radius: 3px;
+}
+.submit_msg:active {
+  transform: scale(0.9);
+}
+input,
+textarea {
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 1px #ffffff9e;
+  outline: none;
+  padding-left: 20px;
+  color: var(--input-text);
+  background: #28282800;
+}
+textarea {
+  padding-top: 12px;
+  height: 111px;
+}
+label {
+  font-size: 15px;
+  font-weight: 600;
+}
+label,
+input {
+  margin-bottom: 9px;
+}
+.user_message_form span {
+  color: #9a24b9;
+  margin-left: 5px;
+}
+.user_message_form span:hover {
+  color: #e32eff;
+}
+
+.user_message_form h3 {
+  font-size: 39px;
+}
+.user_message_form p {
+  font-size: 18px;
+  color: var(--text-color);
+}
+.contact_data_class {
+  gap: 10px;
+  margin: 15px 0 21px 0;
+  font-size: 18px;
+  font-family: inherit;
+  padding: 10px 21px;
+}
+.form_container_left {
+  width: 90%;
+}
+.contact_container {
+  background: var(--contact-container);
+  box-shadow: 0px 0px 6px 1px var(--bg-shadow);
+}
+.user_message_form h3 {
+  color: var(--text-color);
+}
+@media screen and (min-width: 1024px) {
+  .contact_page_section {
+    padding-top: 115px !important;
+  }
+
+  input,
+  textarea {
+    border: 1px solid #9a9a9a5e;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 1px var(--bg-shadow);
+  }
+  .contact_container {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-radius: 10px;
+    flex-direction: row;
+  }
+  .form_container_left {
+    color: #9f9f9f;
+  }
+
+  .contact_section {
+    width: 1042px;
+    background: none !important;
+  }
+  .user_form {
+    width: 80%;
+  }
+  .form_container_right {
+    background-size: cover;
+  }
+  .contact_data_class {
+    margin: 30px 0 30px 0;
+  }
+  .form_container_left .form_container_right {
+    width: 50%;
+  }
+
+  .your_info_data {
+    margin: 0 0 0 10px;
+  }
+
+  .contact_data_class {
+    gap: 14px;
+  }
+  .user_message_form h3,
+  .user_message_form p {
+    margin-left: 8px;
+    justify-content: flex-start;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .form_container_right {
+    width: 100%;
+  }
+
+  .contact_container {
+    border-radius: 6px;
+  }
+  .contact_container {
+    justify-content: space-evenly;
+    flex-direction: column-reverse;
+  }
+  .contact_section {
+    height: 100%;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 720px) {
+  .form_container_left {
+    width: 90%;
+    margin: 0px;
+    padding: 20px 0;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .user_message_form h3,
+  .user_message_form p {
+    margin-left: 8px;
+    justify-content: flex-start;
+  }
+  .user_message_form {
+    padding: 0px !important;
+  }
+  .contact_page_section {
+    padding-top: 90px !important;
+  }
+}

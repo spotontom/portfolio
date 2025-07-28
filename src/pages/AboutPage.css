@@ -1,0 +1,154 @@
+.light {
+  --about-background-color: #f7f5fb;
+  --aboutsvg-background-color: #f7f5fb;
+  --about-text-color: #000000;
+}
+
+.dark {
+  --about-background-color: #1c2541;
+  --aboutsvg-background-color: #1c2541;
+  --about-text-color: #ffffff;
+}
+
+.about_me {
+  width: 100%;
+  background-color: var(--about-background-color);
+  /* clip-path: polygon(100% 0, 100% 90%, 50% 100%, 0 90%, 0 0); */
+}
+.about_me,
+.container_01,
+.my_img,
+.my_info,
+.personal_info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.container_01 {
+  width: 100%;
+  margin: 30px 0px;
+}
+.my_img {
+  width: 50%;
+  margin: 67px 0 35px 0;
+}
+#img {
+  display: flex;
+}
+.my_info h2 {
+  margin: 0px !important;
+  color: var(--about-text-color);
+}
+h2 {
+  margin: 10px;
+  font-size: 42px;
+}
+h2 span {
+  color: #ff5823;
+}
+.my_info {
+  width: 50%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  line-height: 35px;
+  font-family: system-ui;
+}
+.my_info p {
+  width: 96%;
+  margin: 3px;
+  font-size: 18px;
+  color: var(--about-text-color);
+  padding: 2px 15px 20px 15px;
+}
+h4 {
+  font-size: 17px;
+  font-weight: 500;
+}
+h4 span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ff5823;
+}
+.abc h4,
+.xyz h4 {
+  color: var(--about-text-color);
+}
+.personal_info {
+  width: 90%;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+@media screen and (min-width: 1024px) {
+  .my_info {
+    gap: 21px;
+  }
+  .my_info p {
+    font-size: 18px;
+  }
+  .my_img {
+    width: 45%;
+  }
+  .my_img img {
+    width: 567px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .my_img img {
+    width: 523px;
+  }
+  .my_info {
+    gap: 27px;
+  }
+}
+@media screen and (max-width: 925px) {
+  .my_img img {
+    width: 500px;
+  }
+
+  .my_img {
+    width: 100%;
+    margin: 0;
+  }
+  .container_01 {
+    flex-direction: column;
+  }
+  .my_info {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 720px) {
+  .personal_info {
+    flex-direction: column;
+    margin: 1px 0px 15px 0px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .my_img {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .container_01 {
+    width: 100%;
+    flex-direction: column;
+    position: relative;
+    padding: 15px 0 25px 0;
+  }
+  .my_img img {
+    width: 100%;
+  }
+  .my_info {
+    width: 90%;
+  }
+  .my_info h2 {
+    margin: 10px;
+  }
+  .my_info p {
+    width: 100%;
+  }
+  .personal_info {
+    width: 100%;
+  }
+}

@@ -1,0 +1,194 @@
+.light {
+  --skill-background-color: #c2afff;
+  --skill-container-color: #dcdcdc69;
+  --skill-hover: #dcdcdcaa;
+}
+
+.dark {
+  --skill-background-color: #070600;
+  --skill-container-color: #8f8f8f29;
+  --skill-hover: #393939aa;
+}
+.my_skills {
+  display: flex;
+  justify-content: center;
+}
+
+.my_skills,
+.section_container_skills_gif,
+.contain_div {
+  color: #dcdcdc;
+}
+section_container_skills_gif div {
+  color: #626262;
+}
+.my_skills span {
+  color: #ff5823;
+}
+h2 {
+  width: 90% !important;
+  margin: 0px !important;
+  text-align: center !important;
+}
+.my_skills h2 {
+  color: var(--work-text-color);
+  text-shadow: 0px 0px 50px #a4a4a47a;
+}
+#my_skill {
+  min-height: 100vh;
+  padding: 109px 0 0 0;
+  background: var(--skill-background-color);
+}
+.section_container_skills_gif {
+  width: 100%;
+  flex-direction: column;
+  padding: 19px 0;
+}
+.skills_gif_container {
+  width: 90%;
+  gap: 12px;
+}
+.section_container_skills_gif,
+.skills_gif_container div,
+.skills_gif_container img,
+.skill_box,
+.content_img_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.skills_gif_container div {
+  border-radius: 40px;
+  height: 82px;
+  flex-wrap: wrap;
+  width: 64%;
+  background-color: var(--skill-container-color);
+  color: var(--educ-text-color);
+  font-weight: 500;
+}
+.cards:hover {
+  background-color: var(--skill-hover);
+}
+.skills_gif_container img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.contain_div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.container_s {
+  z-index: 50;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 30px 0;
+}
+.skill_box {
+  border: none;
+  gap: 0.5rem;
+  width: 200px;
+  flex-direction: column;
+  margin: 9px;
+  transition: ease-in-out 0.2s;
+  color: var(--educ-text-color);
+}
+.skill_box:hover {
+  border-radius: 12px;
+}
+.skill_box:active {
+  transform: scale(0.9);
+}
+
+.svg_blobs {
+  position: relative;
+  z-index: 1;
+  top: 269px;
+  width: 100%;
+  height: 400px;
+}
+.content_img_container img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+.content_img_container {
+  flex-direction: column;
+  gap: 10px;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background-color: var(--skill-container-color);
+}
+.content_img_container:hover {
+  background-color: var(--skill-hover);
+}
+.content_img_container h3 {
+  font-size: 24px;
+}
+@media screen and (min-width: 1024px) {
+  .skills_gif_container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0;
+  }
+  .skills_gif_container div {
+    padding: 9px;
+    font-size: 18px;
+    text-align: center;
+    height: 109px;
+  }
+  .skills_gif_container img {
+    width: 900px;
+    height: 500px !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .skills_gif_container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0;
+    width: 100%;
+  }
+  .skills_gif_container div {
+    padding: 32px;
+    font-size: 18px;
+    text-align: center;
+    min-height: 109px;
+    height: 215px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .my_skills {
+    margin: 0;
+    padding: 15px 0;
+  }
+  .skills_gif_container {
+    flex-direction: column;
+    align-items: center;
+    gap: 33px;
+  }
+  .skills_gif_container div {
+    width: 90%;
+    padding: 74px;
+    font-size: 16px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .skills_gif_container div {
+    height: 106px;
+    padding: 26px;
+  }
+  .skill_box {
+    width: 150px;
+    height: 150px;
+  }
+}
