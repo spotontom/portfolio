@@ -242,94 +242,194 @@ DELETED FOR NOW!
 //////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 <section id="portfolio" class="portfolio">
+
+  <!-- Inline styles scoped to this section -->
+  <style>
+    #portfolio .row.gap-24 { row-gap: 24px; }
+    #portfolio .portfolio-box {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      transition: transform .25s ease, box-shadow .25s ease;
+      background: #0f0f16;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    /* Keeps every screenshot the same shape, regardless of the source image */
+    #portfolio .portfolio-box .shot {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0d0d14;
+      overflow: hidden;
+    }
+    #portfolio .portfolio-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;           /* crops nicely without stretching */
+      object-position: top center; /* shows top of screenshots where nav bars live */
+      transform: scale(1.01);
+      transition: transform .35s ease;
+      display: block;
+    }
+
+    /* Hover / focus elevation + gentle zoom */
+    #portfolio .portfolio-box:hover,
+    #portfolio .portfolio-box:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 34px rgba(0,0,0,.28);
+    }
+    #portfolio .portfolio-box:hover img,
+    #portfolio .portfolio-box:focus-within img {
+      transform: scale(1.06);
+    }
+
+    /* Caption overlay */
+    #portfolio .portfolio-info {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 14px 16px;
+      color: #fff;
+      background: linear-gradient( to top, rgba(0,0,0,.65), rgba(0,0,0,.0) 85% );
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+    #portfolio .portfolio-box:hover .portfolio-info,
+    #portfolio .portfolio-box:focus-within .portfolio-info {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #portfolio .caption h4 {
+      font-size: 1.05rem;
+      margin: 0 0 2px 0;
+      line-height: 1.25;
+      letter-spacing: .2px;
+    }
+    #portfolio .caption p {
+      margin: 0;
+      font-size: .9rem;
+      opacity: .9;
+    }
+
+    /* Optional: make whole card focusable for keyboard users */
+    #portfolio .portfolio-link {
+      position:absolute; inset:0; z-index:2;
+    }
+
+    /* Nice spacing on smaller screens */
+    @media (max-width: 575px){
+      #portfolio .portfolio-box img{ object-position: center top; }
+    }
+  </style>
+
   <div class="container">
     <div class="row text-center mt-5">
       <h1 class="display-3 fw-bold text-capitalize">Latest work</h1>
       <div class="heading-line"></div>
-      <p class="lead">
-        If you have any questions regarding the projects I have worked on do not hesitate to reach out!
-      </p>
-    </div>
-    <!-- FILTER BUTTONS  -->
-    <div class="row mt-5 mb-4 g-3 text-center">
-      <div class="col-md-12">
-        <button class="btn btn-outline-primary" type="button">All</button>
-        <button class="btn btn-outline-primary" type="button">websites</button>
-        <button class="btn btn-outline-primary" type="button">design</button>
-        <button class="btn btn-outline-primary" type="button">mockup</button>
-      </div>
+      <p class="lead">If you have any questions regarding the projects I have worked on do not hesitate to reach out!</p>
     </div>
 
     <!-- START THE PORTFOLIO ITEMS  -->
-    <div class="row">
+    <div class="row gap-24">
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-1.jpg" alt="portfolio 1 image" title="portfolio 1 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-1.jpg" alt="Full Stack iOS Running App screenshot" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open Full Stack iOS Running App"></a>
           <div class="portfolio-info">
             <div class="caption">
               <h4>Full Stack iOS Running App</h4>
-              <p>category project</p>
+              <p>Mobile • React Native • Firebase</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-2.jpg" alt="portfolio 2 image" title="portfolio 2 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-2.jpg" alt="React Task Tracker Web App screenshot" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open React Task Tracker Web Application"></a>
           <div class="portfolio-info">
             <div class="caption">
               <h4>React Task Tracker Web Application</h4>
-              <p>category project</p>
+              <p>Web • React • LocalStorage</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-3.jpg" alt="portfolio 3 image" title="portfolio 3 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-3.jpg" alt="Bearadise in the Smokies site screenshot" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open Bearadise in the Smokies"></a>
           <div class="portfolio-info">
             <div class="caption">
               <h4>Bearadise in the Smokies</h4>
-              <p>Booking website</p>
+              <p>Booking Website • UI/UX</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-4.jpg" alt="portfolio 4 image" title="portfolio 4 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-4.jpg" alt="Weathers Concrete site screenshot" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open Weathers Concrete"></a>
           <div class="portfolio-info">
             <div class="caption">
-              <h4>Weathers Concrete, Local Small Business Website</h4>
-              <p>concrete site</p>
+              <h4>Weathers Concrete</h4>
+              <p>Small Business • Static Site</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-5.jpg" alt="portfolio 5 image" title="portfolio 5 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-5.jpg" alt="Seaside Landscape Solutions site screenshot" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open Seaside Landscape Solutions"></a>
           <div class="portfolio-info">
             <div class="caption">
-              <h4>Seaside landscape solutions</h4>
-              <p>landscaping site</p>
+              <h4>Seaside Landscape Solutions</h4>
+              <p>Service Website • SEO Ready</p>
             </div>
           </div>
         </div>
       </div>
+
       <div class="col-lg-4 col-md-6">
         <div class="portfolio-box shadow">
-          <img src="images/portfolio/portfolio-6.jpg" alt="portfolio 6 image" title="portfolio 6 picture" class="img-fluid">
+          <div class="shot">
+            <img src="images/portfolio/portfolio-6.jpg" alt="ColorAI Real Estate Tool logo" class="img-fluid">
+          </div>
+          <a class="portfolio-link" href="#" aria-label="Open ColorAI Real Estate Tool"></a>
           <div class="portfolio-info">
             <div class="caption">
               <h4>ColorAI Real Estate Tool</h4>
-              <p>Using AI APIs to change interior photosx</p>
+              <p>AI Tool • Image Processing</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </div><!--/row-->
+  </div><!--/container-->
+
+  <!-- tiny helper so keyboard users can focus cards -->
+  <script>
+    document.querySelectorAll('#portfolio .portfolio-box').forEach(card=>{
+      card.setAttribute('tabindex','0');
+    });
+  </script>
 </section>
 
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -502,7 +602,6 @@ DELETED FOR NOW!
           <li><a href="#">spotontom1@gmail</a></li>
           <li><a href="#">850-896-8724</a></li>
           <li><a href="#">4533 Byslma Circle, Panama City Fl</a></li>
-          <li><a href="#">Lorem ipsum</a></li>
         </ul>
       </div>
     </div>
