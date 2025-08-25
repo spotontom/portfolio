@@ -245,43 +245,64 @@ DELETED FOR NOW!
 
   <!-- Inline styles scoped to this section -->
   <style>
-    /* --- Fix black strip under thumbnails --- */
-    #portfolio .portfolio-box{
+    :root { --tile-radius: 16px; --tile-shadow: 0 12px 28px rgba(0,0,0,.18); }
+
+    #portfolio .grid { row-gap: 26px; }
+    #portfolio .card {
       position: relative;
-      background: transparent;     /* was dark */
-      min-height: 0;               /* kill any theme min-height */
-      line-height: 0;              /* remove extra inline gap */
-      padding-bottom: 0;           /* ensure no bottom padding */
-    }
-    #portfolio .portfolio-box .shot{
-      aspect-ratio: 16/9;
-      display: block;
-      border-bottom-left-radius: 16px;
-      border-bottom-right-radius: 16px;
+      border-radius: var(--tile-radius);
       overflow: hidden;
+      box-shadow: var(--tile-shadow);
+      background: transparent;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-    #portfolio .portfolio-box img{
-      display: block;              /* remove default inline gap */
+    #portfolio .card:focus-within,
+    #portfolio .card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,.28); }
+
+    /* 16:9 media window that clips the image cleanly */
+    #portfolio .media {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-radius: var(--tile-radius);
+      background:#0d0d14;
+      line-height: 0;
+    }
+    #portfolio .media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: var(--pos, center top);
+      display: block;
+      transform-origin: var(--origin, center top);
+      transform: scale(var(--scale, 1));
+      transition: transform .35s ease;
+      filter: saturate(1.02);
     }
-    /* Make sure overlay doesn’t reserve space */
-    #portfolio .portfolio-info{
-      position: absolute !important;
-      left: 0; right: 0; bottom: 0;
-      opacity: 0;
-      transform: translateY(8px);
-      background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0) 85%);
+    #portfolio .card:hover img,
+    #portfolio .card:focus-within img {
+      transform: scale(var(--hover, 1.08));
+    }
+
+    /* Caption overlay (appears on hover) */
+    #portfolio .info {
+      position: absolute; inset: auto 0 0 0;
+      padding: 14px 16px;
+      color: #fff;
+      background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0) 80%);
+      opacity: 0; transform: translateY(8px);
+      transition: opacity .25s ease, transform .25s ease;
       pointer-events: none;
     }
-    #portfolio .portfolio-box:hover .portfolio-info,
-    #portfolio .portfolio-box:focus-within .portfolio-info{
-      opacity: 1;
-      transform: translateY(0);
-    }
+    #portfolio .card:hover .info,
+    #portfolio .card:focus-within .info { opacity: 1; transform: translateY(0); }
+    #portfolio .info h4 { margin: 0 0 2px; font-size: 1.05rem; letter-spacing:.2px; }
+    #portfolio .info p  { margin: 0; font-size: .9rem; opacity:.9; }
+
+    /* Make whole card focusable/linkable easily */
+    #portfolio .hit { position:absolute; inset:0; z-index:2; }
+
+    /* Spacing and basic layout using your existing Bootstrap grid classes */
   </style>
-  
 
   <div class="container">
     <div class="row text-center mt-5">
@@ -290,105 +311,96 @@ DELETED FOR NOW!
       <p class="lead">If you have any questions regarding the projects I have worked on do not hesitate to reach out!</p>
     </div>
 
-    <!-- START THE PORTFOLIO ITEMS  -->
-    <div class="row gap-24">
+    <div class="row grid">
+      <!-- 1) iPhone photo of mobile app — zoomed OUT initially, gentle hover -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-1.jpg" alt="Full Stack iOS Running App screenshot" class="img-fluid">
+        <article class="card" style="--scale:.88; --hover:1.02; --pos:center 45%; --origin:center center;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-1.jpg" alt="Full Stack iOS Running App (iPhone photo)">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open Full Stack iOS Running App"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Full Stack iOS Running App</h4>
-              <p>Mobile • React Native • Firebase</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open Full Stack iOS Running App"></a>
+          <div class="info">
+            <h4>Full Stack iOS Running App</h4>
+            <p>Mobile • React Native • Firebase</p>
           </div>
-        </div>
+        </article>
       </div>
 
+      <!-- 2) Web screenshot — zoomed IN to hide browser chrome -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-2.jpg" alt="React Task Tracker Web App screenshot" class="img-fluid">
+        <article class="card" style="--scale:1.25; --hover:1.33; --pos:center 8%; --origin:center 10%;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-2.jpg" alt="React Task Tracker Web App">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open React Task Tracker Web Application"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>React Task Tracker Web Application</h4>
-              <p>Web • React • LocalStorage</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open React Task Tracker Web Application"></a>
+          <div class="info">
+            <h4>React Task Tracker Web Application</h4>
+            <p>Web • React • LocalStorage</p>
           </div>
-        </div>
+        </article>
       </div>
 
+      <!-- 3) Booking site — a hair less zoom to keep hero image intact -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-3.jpg" alt="Bearadise in the Smokies site screenshot" class="img-fluid">
+        <article class="card" style="--scale:1.22; --hover:1.30; --pos:center 12%; --origin:center 12%;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-3.jpg" alt="Bearadise in the Smokies">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open Bearadise in the Smokies"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Bearadise in the Smokies</h4>
-              <p>Booking Website • UI/UX</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open Bearadise in the Smokies"></a>
+          <div class="info">
+            <h4>Bearadise in the Smokies</h4>
+            <p>Booking Website • UI/UX</p>
           </div>
-        </div>
+        </article>
       </div>
 
+      <!-- 4) Small business site — tighter crop -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-4.jpg" alt="Weathers Concrete site screenshot" class="img-fluid">
+        <article class="card" style="--scale:1.28; --hover:1.36; --pos:center 10%; --origin:center 8%;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-4.jpg" alt="Weathers Concrete website">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open Weathers Concrete"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Weathers Concrete</h4>
-              <p>Small Business • Static Site</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open Weathers Concrete"></a>
+          <div class="info">
+            <h4>Weathers Concrete</h4>
+            <p>Small Business • Static Site</p>
           </div>
-        </div>
+        </article>
       </div>
 
+      <!-- 5) Landscaping site — keep hero title centered -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-5.jpg" alt="Seaside Landscape Solutions site screenshot" class="img-fluid">
+        <article class="card" style="--scale:1.24; --hover:1.32; --pos:center 16%; --origin:center 14%;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-5.jpg" alt="Seaside Landscape Solutions website">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open Seaside Landscape Solutions"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>Seaside Landscape Solutions</h4>
-              <p>Service Website • SEO Ready</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open Seaside Landscape Solutions"></a>
+          <div class="info">
+            <h4>Seaside Landscape Solutions</h4>
+            <p>Service Website • SEO Ready</p>
           </div>
-        </div>
+        </article>
       </div>
 
+      <!-- 6) Logo/landing — center it, modest hover -->
       <div class="col-lg-4 col-md-6">
-        <div class="portfolio-box shadow">
-          <div class="shot">
-            <img src="images/portfolio/portfolio-6.jpg" alt="ColorAI Real Estate Tool logo" class="img-fluid">
+        <article class="card" style="--scale:1.05; --hover:1.12; --pos:center 50%; --origin:center center;">
+          <div class="media">
+            <img src="images/portfolio/portfolio-6.jpg" alt="ColorAI Real Estate Tool">
           </div>
-          <a class="portfolio-link" href="#" aria-label="Open ColorAI Real Estate Tool"></a>
-          <div class="portfolio-info">
-            <div class="caption">
-              <h4>ColorAI Real Estate Tool</h4>
-              <p>AI Tool • Image Processing</p>
-            </div>
+          <a class="hit" href="#" aria-label="Open ColorAI Real Estate Tool"></a>
+          <div class="info">
+            <h4>ColorAI Real Estate Tool</h4>
+            <p>AI Tool • Image Processing</p>
           </div>
-        </div>
+        </article>
       </div>
-    </div><!--/row-->
-  </div><!--/container-->
+    </div>
+  </div>
 
-  <!-- tiny helper so keyboard users can focus cards -->
+  <!-- Optional tiny helper (keyboard focus on cards) -->
   <script>
-    document.querySelectorAll('#portfolio .portfolio-box').forEach(card=>{
-      card.setAttribute('tabindex','0');
-    });
+    document.querySelectorAll('#portfolio .card').forEach(c=>c.tabIndex=0);
   </script>
 </section>
 
