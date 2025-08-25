@@ -245,83 +245,43 @@ DELETED FOR NOW!
 
   <!-- Inline styles scoped to this section -->
   <style>
-    #portfolio .row.gap-24 { row-gap: 24px; }
-    #portfolio .portfolio-box {
+    /* --- Fix black strip under thumbnails --- */
+    #portfolio .portfolio-box{
       position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 26px rgba(0,0,0,.18);
-      transition: transform .25s ease, box-shadow .25s ease;
-      background: #0f0f16;
-      border: 1px solid rgba(0,0,0,.08);
+      background: transparent;     /* was dark */
+      min-height: 0;               /* kill any theme min-height */
+      line-height: 0;              /* remove extra inline gap */
+      padding-bottom: 0;           /* ensure no bottom padding */
     }
-    /* Keeps every screenshot the same shape, regardless of the source image */
-    #portfolio .portfolio-box .shot {
-      width: 100%;
+    #portfolio .portfolio-box .shot{
       aspect-ratio: 16/9;
-      background: #0d0d14;
+      display: block;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
       overflow: hidden;
     }
-    #portfolio .portfolio-box img {
+    #portfolio .portfolio-box img{
+      display: block;              /* remove default inline gap */
       width: 100%;
       height: 100%;
-      object-fit: cover;           /* crops nicely without stretching */
-      object-position: top center; /* shows top of screenshots where nav bars live */
-      transform: scale(1.01);
-      transition: transform .35s ease;
-      display: block;
+      object-fit: cover;
     }
-
-    /* Hover / focus elevation + gentle zoom */
-    #portfolio .portfolio-box:hover,
-    #portfolio .portfolio-box:focus-within {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 34px rgba(0,0,0,.28);
-    }
-    #portfolio .portfolio-box:hover img,
-    #portfolio .portfolio-box:focus-within img {
-      transform: scale(1.06);
-    }
-
-    /* Caption overlay */
-    #portfolio .portfolio-info {
-      position: absolute;
-      inset: auto 0 0 0;
-      padding: 14px 16px;
-      color: #fff;
-      background: linear-gradient( to top, rgba(0,0,0,.65), rgba(0,0,0,.0) 85% );
+    /* Make sure overlay doesn’t reserve space */
+    #portfolio .portfolio-info{
+      position: absolute !important;
+      left: 0; right: 0; bottom: 0;
       opacity: 0;
       transform: translateY(8px);
-      transition: opacity .25s ease, transform .25s ease;
+      background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,0) 85%);
       pointer-events: none;
     }
     #portfolio .portfolio-box:hover .portfolio-info,
-    #portfolio .portfolio-box:focus-within .portfolio-info {
+    #portfolio .portfolio-box:focus-within .portfolio-info{
       opacity: 1;
       transform: translateY(0);
     }
-    #portfolio .caption h4 {
-      font-size: 1.05rem;
-      margin: 0 0 2px 0;
-      line-height: 1.25;
-      letter-spacing: .2px;
-    }
-    #portfolio .caption p {
-      margin: 0;
-      font-size: .9rem;
-      opacity: .9;
-    }
-
-    /* Optional: make whole card focusable for keyboard users */
-    #portfolio .portfolio-link {
-      position:absolute; inset:0; z-index:2;
-    }
-
-    /* Nice spacing on smaller screens */
-    @media (max-width: 575px){
-      #portfolio .portfolio-box img{ object-position: center top; }
-    }
   </style>
+  
 
   <div class="container">
     <div class="row text-center mt-5">
